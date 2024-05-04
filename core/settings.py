@@ -104,6 +104,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Rest Framework all credentials
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'app.auth.authentication.APITokenAuthentication',
+    ],
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -126,49 +137,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Rest Framework all credentials
-REST_FRAMEWORK = {
-    
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'app.auth.authentication.APITokenAuthentication',
-    ],
-}
-
-# Get the current IST date
-current_date = datetime.now().strftime('%Y-%m-%d')
-
-LOG_FILE = f'api_{current_date}.log'
-LOG_PATH = path.join(LOG_DIR, LOG_FILE)
-
-LOGGER_LEVEL = 'INFO'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'custom_verbose': {
-            'format': '[%(levelname)s] %(asctime)s %(name)s: %(message)s',
-            'datefmt': '%d/%b/%Y %H:%M:%S',
-        },
-    }, 
-    'handlers': {
-        'file': {
-            'level': LOGGER_LEVEL,
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': LOG_PATH,
-            'when': 'midnight',  # 'midnight' for daily rotation
-            'interval': 1,  # Interval set to 1 day
-            'backupCount': 30,  # Keep 30 days' worth of logs
-            'formatter': 'custom_verbose',
-            'encoding': 'utf8',
-        },
-    },
-    'loggers': {
-        'DQH_AT_API': {
-            'handlers': ['file'],
-            'level': LOGGER_LEVEL,
-            'propagate': True,
-        },
-    },
-}
