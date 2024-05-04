@@ -61,7 +61,7 @@ Before installing the DQH Admin Tool, ensure you have the following installed:
 
 - .env Configuration
 
-Create a `.env` file in the backend directory and provide the necessary environment variables:
+Create a `.env` file in the vendor_management_system directory and provide the necessary environment variables:
 
 ```bash
   export AUTH_TOKEN='<AUTH_TOKEN>' # mix of alphabet,numbers,special characters with more than 20 letters.
