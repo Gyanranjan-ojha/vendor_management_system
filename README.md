@@ -5,7 +5,7 @@ This system will handle vendor profiles, track purchase orders, and calculate ve
 
 ## Prerequisites
 
-Before installing the DQH Admin Tool, ensure you have the following installed:
+Before installing the Vendor Management System, ensure you have the following installed:
 
 - Python (version 3.10 or higher)
 - Git (version 2.42 or higher)
