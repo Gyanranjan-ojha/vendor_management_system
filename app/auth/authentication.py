@@ -21,9 +21,8 @@ class APITokenAuthentication(BaseAuthentication):
     """
     def authenticate(self, request):
         api_token = getenv("AUTH_TOKEN")
-        print(f"api_token: {api_token}")
+
         auth_header = request.headers.get("Authorization")
-        print(f"auth_header: {auth_header}")
 
         if not auth_header:
             raise AuthenticationFailed("Invalid or missing Authorization header")
